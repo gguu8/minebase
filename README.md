@@ -1,2 +1,2 @@
-# mine
-hyperf &amp; mine
+# mines
+hyperf &amp; mines
