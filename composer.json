@@ -1,0 +1,44 @@
+{
+    "name": "mine/framework",
+    "description": "framework of mine",
+    "autoload": {
+        "psr-4": {
+            "Mine\\Framework\\": "src/"
+        },
+        "files": [
+            "src/Functions.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "gguu8",
+            "email": "gguu_8@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "ext-swoole": ">=4.5"
+    },
+    "require-dev": {
+        "96qbhy/hyperf-auth": "^2.2",
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "hyperf/framework": "2.2.*",
+        "hyperf/testing": "2.2.*",
+        "phpstan/phpstan": "^0.12",
+        "swoole/ide-helper": "dev-master",
+        "hyperf/guzzle": "2.2.*"
+    },
+     "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "co-phpunit -c phpunit.xml --colors=always",
+        "analyse": "phpstan analyse --memory-limit 1024M -l 0 ./src",
+        "cs-fix": "php-cs-fixer fix $1"
+    },
+    "extra": {
+        "hyperf": {
+            "config": "Mine\\Framework\\ConfigProvider"
+        }
+    }
+}

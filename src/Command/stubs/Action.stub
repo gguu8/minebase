@@ -1,0 +1,31 @@
+<?php
+
+declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ * @link     https://www.hyperf.io
+ * @document https://hyperf.wiki
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
+
+namespace #NAMESPACE#;
+
+use MoChat\Framework\Action\AbstractAction;
+use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\RequestMapping;
+
+/**
+ * #COMMENT#
+ * @Controller()
+ */
+class #ACTION# extends AbstractAction
+{
+    /**
+     * @RequestMapping(path="/#ROUTE#", methods="#METHOD#")
+     */
+    public function handle(): array
+    {
+        return ['#ACTION#'];
+    }
+}
