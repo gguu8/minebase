@@ -1,6 +1,6 @@
 {
-    "name": "mine/framework",
-    "description": "framework of mine",
+    "name": "mines/framework",
+    "description": "framework of mines",
     "autoload": {
         "psr-4": {
             "Mine\\Framework\\": "src/"
