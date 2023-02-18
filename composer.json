@@ -25,14 +25,6 @@
         "hyperf/testing": "2.2.*",
         "hyperf/guzzle": "2.2.*"
     },
-    "config": {
-        "sort-packages": true
-    },
-    "scripts": {
-        "test": "co-phpunit -c phpunit.xml --colors=always",
-        "analyse": "phpstan analyse --memory-limit 1024M -l 0 ./src",
-        "cs-fix": "php-cs-fixer fix $1"
-    },
     "extra": {
         "hyperf": {
             "config": "Mine\\Framework\\ConfigProvider"
