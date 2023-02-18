@@ -25,9 +25,12 @@
         "hyperf/testing": "2.2.*",
         "hyperf/guzzle": "2.2.*"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "extra": {
         "hyperf": {
             "config": "Mine\\Framework\\ConfigProvider"
         }
-    }
+    },
+     "repositories": {}
 }
