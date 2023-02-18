@@ -67,7 +67,7 @@ class ConfigProvider
                 //     'source'      => __DIR__ . '/../publish/dependencies.php',
                 //     'destination' => BASE_PATH . '/config/autoload/dependencies.php',
                 // ],
-            ],
+            //],
         ];
     }
 
