@@ -21,7 +21,7 @@ class ConfigProvider
 {
     public function __invoke(): array
     {
-        $serviceMap = $this->serviceMap();
+        $serviceMap = $this->register_service_map();
 
         return [
             'dependencies' => array_merge($serviceMap, [
@@ -67,25 +67,68 @@ class ConfigProvider
                 //     'source'      => __DIR__ . '/../publish/dependencies.php',
                 //     'destination' => BASE_PATH . '/config/autoload/dependencies.php',
                 // ],
-            //],
+            // ],
         ];
     }
+
+    /**
+
+   
+    /**
+     * 模型服务与契约的依赖配置.
+     * @param string $path 契约与服务的相对路径
+     * @return array 依赖数据
+     */
+   protected function service_map(string $path, string $namespacePrefix): array
+    {
+        //   var_dump($path);
+        //   var_dump($namespacePrefix);
+        $namespacePrefix = ltrim($namespacePrefix, '\\');
+        $services = readFileName($path . '/Service');
+        // var_dump($services);
+        // exit;
+        $dependencies = [];
+        foreach ($services as $service) {
+            $contractFilename = str_replace('Service', 'Contract', $service);
+            $dependencies[$namespacePrefix . '\\Contract\\'.$contractFilename] = $namespacePrefix . '\\Service\\' . $service;
+        }
+        // echo "<pre>";
+        // print_r($dependencies);
+        return $dependencies;
+    }
+
+
+
 
     /**
      * 模型服务与契约的依赖配置.
      * @param string $path 契约与服务的相对路径
      * @return array 依赖数据
      */
-    protected function serviceMap(string $path = 'app'): array
+    protected function register_service_map(string $path=BASE_PATH, string $namespacePrefix = 'App'): array
     {
-        $services    = readFileName(BASE_PATH . '/' . $path . '/Service');
-        $spacePrefix = ucfirst($path);
-
         $dependencies = [];
-        foreach ($services as $service) {
-            $dependencies[$spacePrefix . '\\Contract\\' . $service . 'Interface'] = $spacePrefix . '\\Service\\' . $service;
+        if (! is_dir($path)) {
+            return $dependencies;
         }
-
+        
+        $files = scandir($path);
+// var_dump($files);
+        foreach ($files as $file) {
+            if (in_array($file, ["app","api"])) {
+                 $namespacePrefix=ucfirst($file);
+                 $appcations=scandir($file);
+                 foreach ($appcations as $v){
+                    if (!in_array($v, ['.', '..', '.DS_Store'])) {
+                        $dependencies = array_merge($this->service_map($path."/".$file."/".$v, $namespacePrefix."\\".$v), $dependencies);
+                    }
+                     
+                 } 
+            }
+        }
+        // var_dump($dependencies);
+        // exit;
         return $dependencies;
     }
+
 }

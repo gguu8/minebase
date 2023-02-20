@@ -35,7 +35,7 @@ class CorsMiddleware implements MiddlewareInterface
             ->withHeader('Access-Control-Allow-Credentials', 'true')
             ->withHeader(
                 'Access-Control-Allow-Headers',
-                'Authorization,Accept,Content-Type,Origin,User-Agent,X-Requested-With,Mine-Corp-Id,Mine-Source-Type'
+                'Authorization,Accept,Content-Type,Origin,User-Agent,X-Requested-With,Mines-Corp-Id,Mines-Source-Type'
             )
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 
