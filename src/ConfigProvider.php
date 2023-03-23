@@ -14,8 +14,10 @@ use Mine\Framework\Exception\Handler\AuthExceptionHandler;
 use Mine\Framework\Exception\Handler\CommonExceptionHandler;
 use Mine\Framework\Exception\Handler\GuzzleRequestExceptionHandler;
 use Mine\Framework\Exception\Handler\ValidationExceptionHandler;
+use Mine\Framework\Exception\Handler\ErrorExceptionHandler;
 use Mine\Framework\Middleware\CorsMiddleware;
 use Mine\Framework\Middleware\ResponseMiddleware;
+
 
 class ConfigProvider
 {
@@ -33,6 +35,7 @@ class ConfigProvider
                         GuzzleRequestExceptionHandler::class,
                         ValidationExceptionHandler::class,
                         AuthExceptionHandler::class,
+                        ErrorExceptionHandler::class
                     ],
                 ],
             ],
@@ -54,6 +57,7 @@ class ConfigProvider
                     ],
                 ],
             ],
+            
             // 'publish' => [
             //     [
             //         'id'          => 'framework',
@@ -93,7 +97,7 @@ class ConfigProvider
             $dependencies[$namespacePrefix . '\\Contract\\'.$contractFilename] = $namespacePrefix . '\\Service\\' . $service;
         }
         // echo "<pre>";
-        // print_r($dependencies);
+//         print_r($dependencies);
         return $dependencies;
     }
 
@@ -105,29 +109,25 @@ class ConfigProvider
      * @param string $path 契约与服务的相对路径
      * @return array 依赖数据
      */
-    protected function register_service_map(string $path=BASE_PATH, string $namespacePrefix = 'App'): array
+    protected function register_service_map(string $path="app", string $namespacePrefix = 'App'): array
     {
         $dependencies = [];
         if (! is_dir($path)) {
             return $dependencies;
         }
         
-        $files = scandir($path);
-// var_dump($files);
+        $files = scandir(BASE_PATH . '/' . $path);
+
         foreach ($files as $file) {
-            if (in_array($file, ["app","api"])) {
-                 $namespacePrefix=ucfirst($file);
-                 $appcations=scandir($file);
-                 foreach ($appcations as $v){
-                    if (!in_array($v, ['.', '..', '.DS_Store'])) {
-                        $dependencies = array_merge($this->service_map($path."/".$file."/".$v, $namespacePrefix."\\".$v), $dependencies);
-                    }
-                     
-                 } 
+            if (in_array($file, ['.', '..', '.DS_Store'])) {
+                continue;
             }
+
+            $dependencies = array_merge($this->service_map($path."/".$file, $namespacePrefix."\\".$file), $dependencies);
+
         }
-        // var_dump($dependencies);
-        // exit;
+//         var_dump($dependencies);
+//         exit;
         return $dependencies;
     }
 

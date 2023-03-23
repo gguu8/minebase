@@ -13,9 +13,13 @@ namespace Mine\Framework\Model;
 
 use Hyperf\DbConnection\Model\Model;
 use Hyperf\Utils\Str;
+use Hyperf\ModelCache\Cacheable;
+use Hyperf\ModelCache\CacheableInterface;
 
-class AbstractModel extends Model
+class AbstractModel extends Model implements CacheableInterface
 {
+    use Cacheable;
+
     /**
      * 查询单条 - 根据ID.
      * @param int $id ID

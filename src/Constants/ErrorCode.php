@@ -21,7 +21,7 @@ use Hyperf\Constants\Annotation\Constants;
  * 业务模块码:
  * 100  -  公共模块
  * 100  -  授权模块
- * 200  -  通讯录模块
+ * 200  -  后台模块
  * 300  -  外部联系人模块
  * 301  -  外部联系人 - 高级属性模块
  * 400  -  会话内容存档模块.
@@ -126,4 +126,16 @@ class ErrorCode extends AbstractConstants
      * @HttpCode("405")
      */
     const INVALID_HTTP_METHOD = 100016;
+
+    /**
+     * @Message("验证码错误")
+     * @HttpCode("423")
+     */
+    const VERCODE_INVALID = 100017;
+    /**
+     * @Message("非法请求")
+     * @HttpCode("503")
+     */
+    public const ADMIN_CAPTCHA = 100018;
+
 }

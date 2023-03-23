@@ -27,12 +27,12 @@ abstract class AbstractController
 
      #[Inject]
     protected ResponseInterface $response;
-    
+
     protected function success($data = [],$message="success",$code=200)
     {
         return $this->response->json([
             'code' => $code,
-            'msg'  => $message,
+            'message' => $message,
             'data' => $data,
         ]);
     }

@@ -50,6 +50,7 @@ class ResponseMiddleware implements MiddlewareInterface
         if ($this->whiteListAuth($this->responseRawRoutes)) {
             return $response;
         }
+
         return $this->formatStream($response);
     }
 
@@ -57,8 +58,7 @@ class ResponseMiddleware implements MiddlewareInterface
     {
         $oldStream  = json_decode($response->getBody()->getContents(), true) ?? [];
         $httpCode   = $response->getStatusCode();
-        $formatData = responseDataFormat($httpCode, '', $oldStream);
-
+        $formatData = responseDataFormat($httpCode, 'success', $oldStream);
         $newStream = new SwooleStream(json_encode($formatData, JSON_UNESCAPED_UNICODE));
         return $response->withBody($newStream);
     }
