@@ -25,10 +25,10 @@ use Hyperf\Constants\Annotation\Constants;
  * 300  -  外部联系人模块
  * 301  -  外部联系人 - 高级属性模块
  * 400  -  会话内容存档模块.
- * @Constants
  * @method static string getMessage(int $code)  获取错误码信息
  * @method static int getHttpCode(int $code) 获取错误码的httpCode
  */
+#[Constants]
 class ErrorCode extends AbstractConstants
 {
     /**

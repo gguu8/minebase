@@ -12,8 +12,8 @@ namespace Mine\Framework\Command;
 
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Command\Command as HyperfCommand;
-use MoChat\Framework\Event\PluginInstalled;
-use MoChat\Framework\Event\PluginUninstalled;
+use Mine\Framework\Event\PluginInstalled;
+use Mine\Framework\Event\PluginUninstalled;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Swoole\Coroutine\System;
