@@ -29,7 +29,7 @@ class JwtAuthMiddleware extends AuthMiddleware
      */
     protected $authWhiteRoutes;
 
-    protected $guards = ['jwt'];
+    protected array $guards = ['jwt'];
 
     public function __construct(ContainerInterface $container, ConfigInterface $config)
     {

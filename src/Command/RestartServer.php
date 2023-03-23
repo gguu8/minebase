@@ -27,6 +27,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 /**
  * @\Hyperf\Command\Annotation\Command()
  */
+ 
 class RestartServer extends Command
 {
     /**

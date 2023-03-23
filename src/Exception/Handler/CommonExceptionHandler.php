@@ -51,7 +51,7 @@ class CommonExceptionHandler extends ExceptionHandler
 
         ## 阻止异常冒泡
         $this->stopPropagation();
-        return $response->withHeader('Server', 'mochat')
+        return $response->withHeader('Server', 'Mine')
             ->withAddedHeader('Content-Type', 'application/json;charset=utf-8')
             ->withStatus($httpCode)
             ->withBody($dataStream);

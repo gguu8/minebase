@@ -19,11 +19,11 @@ use Hyperf\Di\Aop\ProceedingJoinPoint;
  */
 class MySqlGrammarAspect extends AbstractAspect
 {
-    public $classes = [
+    public array $classes = [
         'Hyperf\Database\Schema\Grammars\MySqlGrammar::compileColumnListing',
     ];
 
-    public $annotations = [
+    public array $annotations = [
     ];
 
     /**

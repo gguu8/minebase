@@ -23,8 +23,8 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * 模型trait生成.
- * @Command
  */
+ #[Command]
 class ModelCommand extends HyperfModelCommand
 {
     public function __construct(ContainerInterface $container)

@@ -15,9 +15,7 @@ use Hyperf\Command\Command as HyperfCommand;
 use Hyperf\Utils\Str;
 use Psr\Container\ContainerInterface;
 
-/**
- * @Command
- */
+#[Command]
 class ServiceInterfaceCommand extends HyperfCommand
 {
     use CommandTrait;

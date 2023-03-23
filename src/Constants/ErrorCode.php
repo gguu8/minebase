@@ -14,6 +14,7 @@ namespace Mine\Framework\Constants;
 use Hyperf\Constants\AbstractConstants;
 use Hyperf\Constants\Annotation\Constants;
 
+
 /**
  * 错误code
  * 3位HTTP码 + 6位业务码[前3位为模块，后3位为业务]
@@ -28,6 +29,7 @@ use Hyperf\Constants\Annotation\Constants;
  * @method static string getMessage(int $code)  获取错误码信息
  * @method static int getHttpCode(int $code) 获取错误码的httpCode
  */
+
 #[Constants]
 class ErrorCode extends AbstractConstants
 {

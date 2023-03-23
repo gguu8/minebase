@@ -144,7 +144,6 @@ class AbstractModel extends Model implements CacheableInterface
                     $model = $model->where($k, $v);
                     continue;
                 }
-
                 ## 二维索引数组
                 if (is_numeric($k)) {
                     $v[1]    = mb_strtoupper($v[1]);
